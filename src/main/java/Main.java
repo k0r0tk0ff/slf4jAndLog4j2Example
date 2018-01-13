@@ -2,14 +2,18 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class Main {
-    Logger log  = LoggerFactory.getLogger(Main.class);
+    private final static Logger LOG  = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        LOG.info("Start main() method from Main class");
+
         Main main = new Main();
 
         try {
             main.work();
         } catch (Exception e) {
+            LOG.info("Intercept exception:");
             main.exceptionHandler(e);
         }
 
@@ -17,14 +21,14 @@ public class Main {
 
     void work() throws Exception {
 
-        log.debug("run app");
+        LOG.debug("run app");
 
         Support support = new Support();
         support.asdf();
     }
 
     void exceptionHandler (Exception e) {
-        log.error(e.toString());
+        LOG.error(e.toString());
     }
 
 }
